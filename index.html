@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Surprise 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url("suju.jpg") no-repeat center center/cover;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.45);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 3rem;
+      color: #ffe6f2;
+      position: relative;
+      z-index: 2;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 15px 35px;
+      margin: 20px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      background-color: #ff4d88;
+      color: white;
+      position: relative;
+      z-index: 2;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #ff1a66;
+    }
+
+    #videoSection {
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    video {
+      width: 80%;
+      max-width: 500px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .kiss {
+      position: absolute;
+      font-size: 2rem;
+      animation: fly 4s linear forwards;
+      z-index: 3;
+    }
+
+    @keyframes fly {
+      from {
+        bottom: -50px;
+        opacity: 1;
+      }
+      to {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(100px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+
+  <h1>Will you be my Valentine, Suju? 💘</h1>
+
+  <div id="buttons">
+    <button onclick="sayYes()">Yes 😍</button>
+    <button onclick="sayYes()">Definitely Yes 💖</button>
+  </div>
+
+  <div id="videoSection">
+    <h1>She said YESSS 💕</h1>
+    <video autoplay loop>
+      <source src="kisses.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("videoSection").style.display = "block";
+      setInterval(createKiss, 250);
+    }
+
+    function createKiss() {
+      const kiss = document.createElement("div");
+      kiss.className = "kiss";
+      kiss.innerHTML = "💋";
+      kiss.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(kiss);
+
+      setTimeout(() => {
+        kiss.remove();
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
